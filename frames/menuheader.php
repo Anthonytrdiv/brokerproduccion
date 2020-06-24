@@ -79,13 +79,13 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="../librerias/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <img id='fperfil2'src="<?php echo "../bienvenido/images/users/".$_SESSION['imageuserperfil'];?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $_SESSION['nameandlast']?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="../librerias/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img id='fperfil3' src="<?php echo "../bienvenido/images/users/".$_SESSION['imageuserperfil'];?>" class="img-circle" alt="User Image">
 
                 <p>
                 <?php echo $_SESSION['nameandlast']." - ".$_SESSION['aliastipouser']?>

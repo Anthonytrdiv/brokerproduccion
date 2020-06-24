@@ -254,9 +254,10 @@ class utilsphp
         require("config/conex.php");
         $queryve = mysqli_query($enlacego,"select * from gouser where email = '$codemail'");
         while($rowqry = mysqli_fetch_assoc($queryve)){
-            $tdocumento = $rowqry['tdocumento'];
+            $tdocumento = $rowqry['ubigeo'];
         }
-            if($tdocumento <> 9){
+        //Vamos a chequear
+            if($tdocumento <> 50000){
                 // YA se registro
                 $rest = 1;
             }else{

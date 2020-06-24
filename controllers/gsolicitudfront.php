@@ -17,6 +17,7 @@ if(!empty($_POST['postactivaterse'])){
     $titulore = $utilsphpregister->depurateinfor($flags->tamanotitulos,$_POST['posttitulo'],"Titulo");
     $descripre = $utilsphpregister->depurateinfor($flags->tamanodescripcion,$_POST['postdetalle'],"Descripción");
     $postselect = $utilsphpregister->validarestados($_POST['postselect'],'precios','idprecio');
+    
     if(!empty($titulore)){
         echo "<p class='text-danger'>".$titulore."</p>";
         
@@ -24,27 +25,32 @@ if(!empty($_POST['postactivaterse'])){
         echo "<p class='text-danger'>".$descripre."</p>";
     }else if(empty($postselect)){
         echo "<p class='text-danger'> El Precio indicado no existe</p>";
-    }else if($_SESSION['iduser'] == $_SESSION['idespeci']){
+    }else if($_SESSION['iduser'] == $_POST['postidespecialista']){
         echo "<p class='text-danger'> No puedes generar solicitudes para tu mismo usuario ;)</p>";
     }else{
-        $result = $entitynewservice->registrarservicio($_SESSION['iduser'],$_SESSION['idtservicioespe'],$_POST['posttitulo'],$_POST['postdetalle'],$_POST['postselect'],'1',$utilsphpregister->fecha(),'D',$_SESSION['idespeci']);
+        foreach($entityusersmodal->listarxiduser2($_POST['postidespecialista']) as $flistidespe){
+
+        }
+        if(empty($flistidespe['idtipservicio'])){
+            $result = 0;
+        }else{
+            $result = $entitynewservice->registrarservicio($_SESSION['iduser'],$flistidespe['idtipservicio'],$_POST['posttitulo'],$_POST['postdetalle'],$_POST['postselect'],'1',$utilsphpregister->fecha(),'D',$_POST['postidespecialista']);
+        }
         
         if($result === 0){
             echo "Ocurrio un error inesperado, volver a intentarlo o volver más tarde";
         }else if($result === 1){
             //here
-
+         
             $envioemail = $emailwork->newserviceemail($utilsphpregister->fecha(),$_POST['postdetalle'],$preciosaprox->mostrarnameprecio($_POST['postselect']),$_SESSION['nameandlast'],$_SESSION['emailespetemp']);
             if($envioemail == 1){
                 $_SESSION['emailespetemp'] ="";
-                $_SESSION['idespeci'] = "";
+                // $_SESSION['idespeci'] = "";
                 echo 1;
             }else{
                 echo 1;
             }
-            // Eliminar esta sesión cada vez que se envia el mensaje
- 
-             // Eliminar esta sesión cada vez que se envia el mensaje
+      
             
         }
         

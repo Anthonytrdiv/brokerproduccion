@@ -45,43 +45,82 @@ $.post("../controllers/frontcontactarespec.php",{
 
 }
 
-function registercont(){
+function registercont() {
+
   var actiateregister = "activate";
   var txtlastname = $("#txtlastname").val();
-  var slstdocumento = $("#slstdocumento option:selected").val();
-  var txtnrodocumento = $("#txtnrodocumento").val();
-  // var txtubicaciond = $("#txtubicacion").val();
-  var iddistrito = $("#iddistrito option:selected").val();
-  var txtdirecciond = $("#txtdirecciond").val();
-  var slstipodoc = $("#slstipodoc option:selected").val();
-  var txtareades = $("#txtareades").val();
   var nrowhatsapp = $("#nrowhatsapp").val();
+  var iddistrito = $("#iddistrito option:selected").val();
 
-$.post("../controllers/modules.php",{
-  pactiateregister:actiateregister,
-  ptxtlastname:txtlastname,
-  pslstdocumento:slstdocumento,
-  ptxtnrodocumento:txtnrodocumento,
-  // ptxtubicaciond:txtubicaciond,
-  postiddistrito:iddistrito,
-  ptxtdirecciond:txtdirecciond,
-  pslstipodoc:slstipodoc,
-  ptxtareades:txtareades,
-  pnrowhatsapp:nrowhatsapp
-},function(responsere){
 
-  var filtrado = responsere.trim();
- 
-  if(filtrado === "1"){
-    alert("Gracias por registrate en IBROKERGO!")
-    $(location).attr('href','index.php');
-  }else{
-  $("#msmerrorge").html(responsere);
-  }
-  
-});
+  var slstipodoc = $("#idcatservicio option:selected").val();
+  var txtareades = $("#txtareades").val();
+  // var slstdocumento = $("#slstdocumento option:selected").val();
+  // var txtnrodocumento = $("#txtnrodocumento").val();
+  // var txtubicaciond = $("#txtubicacion").val();
+
+  // var txtdirecciond = $("#txtdirecciond").val();
+
+
+
+
+  $.post("../controllers/modules.php", {
+    pactiateregister: actiateregister,
+    ptxtlastname: txtlastname,
+    pnrowhatsapp: nrowhatsapp,
+    postiddistrito: iddistrito,
+    pslstipodoc: slstipodoc,  // Tipo de Servicio que realiza
+    ptxtareades: txtareades
+    // pslstdocumento:slstdocumento,
+    // ptxtnrodocumento:txtnrodocumento,
+    // ptxtubicaciond:txtubicaciond,
+    // ptxtdirecciond:txtdirecciond,
+  }, function (responsere) {
+
+    var filtrado = responsere.trim();
+
+    if (filtrado === "1") {
+      alert("Gracias por terminar tu registro en IBROKERGO!")
+      $("#modalalertnotregister").modal("hide");
+    } else {
+      $("#msmerrorge").html(responsere);
+
+    }
+
+  });
 }
 
+function registercont2() {
+
+  var actiateregister = "activate";
+  var txtlastname = $("#txtlastname").val();
+  var nrowhatsapp = $("#nrowhatsapp").val();
+  var iddistrito = $("#iddistrito option:selected").val();
+
+  var slstipodoc = $("#idcatservicio option:selected").val();
+  var txtareades = $("#txtareades").val();
+
+  $.post("../controllers/modules.php", {
+    pactiateregister: actiateregister,
+    ptxtlastname: txtlastname,
+    pnrowhatsapp: nrowhatsapp,
+    postiddistrito: iddistrito,
+    pslstipodoc: slstipodoc,  // Tipo de Servicio que realiza
+    ptxtareades: txtareades
+  }, function (responsere) {
+
+    var filtrado = responsere.trim();
+
+    if (filtrado === "1") {
+      alert("Gracias por terminar tu registro en IBROKERGO!")
+      cancelar();
+    } else {
+      $("#msmerrorge").html("<div class='alert alert-info alert-dismissible'>"+responsere+"</div>");
+
+    }
+
+  });
+}
 function detval(){
  var dato = $("#txtareades").val();
  if(dato === ""){

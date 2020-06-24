@@ -72,7 +72,7 @@ if (!empty($_POST['postactivatetable'])) {
             <div class='row'>
                 <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12'>
                     <div class='jp_job_post_side_img'>
-                        <img src='images/content/job_post_img1.jpg' alt='post_img' />
+                        <img src='images/users/".$lastfquereseach3['imagen']."' style='width:100;height:95px;' />
                     </div>
                     <div class='jp_job_post_right_cont'>
                         <h4>".$fservicios3['name'].", ".$fservicios3['nombre']." (1 - 2 Yrs Exp.)</h4>
@@ -88,7 +88,7 @@ if (!empty($_POST['postactivatetable'])) {
                         <ul>
                             <li><a href='#'><i class='fa fa-heart-o'></i></a></li>
                            
-                            <li><a href='candidate_profile.php?id=".$lastfquereseach3['iduser']."' target='_blank'>Contratar!</a></li>
+                            <li><a href='candidate_profile.php?id=".$lastfquereseach3['iduser']."' target='_blank' onclick='validatesession()'>Contratar!</a></li>
                         </ul>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ echo "<div class='item' data-hash='data0'>
         <div class='row'>
             <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12'>
                 <div class='jp_job_post_side_img'>
-                    <img src='images/content/job_post_img1.jpg' alt='post_img' />
+                    <img src='images/users/".$fcantregistros['imagen']."' style='width:100;height:95px;'  />
                 </div>
                 <div class='jp_job_post_right_cont'>
                     <h4>".$fservicios['name'].", ".$fservicios['nombre']." (1 - 2 Yrs Exp.)</h4>
@@ -331,7 +331,7 @@ if (!empty($_POST['postactivatesearch'])) {
                     <div class='row'>
                         <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12'>
                             <div class='jp_job_post_side_img'>
-                                <img src='images/content/job_post_img1.jpg' alt='post_img' />
+                            <img src='images/users/".$fquereseach['imagen']."' style='width:100;height:95px;' />
                             </div>
                             <div class='jp_job_post_right_cont'>
                                 <h4>".$fservicios2['name'].", ".$fservicios2['nombre']." (1 - 2 Yrs Exp.)</h4>

@@ -240,7 +240,7 @@ input[type = "radio"]:checked ~ label{color:orange;}
   </div>
   <!-- Crear Modal para subir fotos -->
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="MYFOTO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -250,21 +250,86 @@ input[type = "radio"]:checked ~ label{color:orange;}
           </button>
         </div>
         <div class="modal-body">
-          <form>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile">
-              <label class="custom-file-label" for="customFile">Choose file</label>
+
+
+          <h4><code>Es recomendable que tu foto sea de 440 x 440 px </code></h4>
+          <center><img src="../bienvenido/images/users/logofacebook.png" class="card-img-top" alt="Girl in a jacket" style="width:440px;height:440px;"></center>
+
+          <div class="form-group">
+            <label for="image">Nueva imagen</label>
+            <input type="file" class="form-control-file" name="image" id="image">
+          </div>
+
+
+
+
+
+
+
+          <!-- <form method="post" action="#" enctype="multipart/form-data">
+            <div class="card" style="width: 18rem;">
+
+              <img class="card-img-top" src="images/default-avatar.png">
+
+
+              <div class="card-body">
+                <h5 class="card-title">Sube una foto</h5>
+                <p class="card-text">Sube una imagen...</p>
+                <div class="form-group">
+                  <label for="image">Nueva imagen</label>
+                  <input type="file" class="form-control-file" name="image" id="image">
+                </div>
+                <input type="button" class="btn btn-primary upload" value="Subir" onclick="cargarimg()">
+              </div>
             </div>
-          </form>
+          </form> -->
+
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary upload" value="Subir" onclick="cargarimg()">Guardar Foto</button>
         </div>
       </div>
     </div>
   </div>
+
+  <script>
+    function cargarimg() {
+
+      var formData = new FormData();
+      var files = $('#image')[0].files[0];
+      formData.append('file', files);
+      $.ajax({
+        url: '../controllers/image.php',
+        type: 'post',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+          if (response != 0) {
+            $(".card-img-top").attr("src", response);
+            alert("Imagen cargada");
+            
+            
+           
+            $("#fperfil1").attr("src", response);
+            $("#fperfil2").attr("src", response);
+            $("#fperfil3").attr("src", response);
+            $("#fperfil4").attr("src", response);
+
+
+            
+            $("#MYFOTO").modal("hide");
+          } else {
+            alert('Formato de imagen incorrecto.');
+          
+            
+          }
+        }
+      });
+    }
+  </script>
 
   <!-- ./wrapper -->
 
@@ -435,74 +500,76 @@ input[type = "radio"]:checked ~ label{color:orange;}
   echo "</div>";
   ?>
 
-  
-    <script>
-      function guiauser() {
-       
-        var activategu ="guiauso";
-        $.post("../controllers/guiauso.php",{
-          postactivategu:activategu
-        },function(responsedata){
-          $("#datawelcome").html(responsedata);
-        });
-        $("#id01").modal("show");
-        
-      }
-    </script>
 
-    <script src="../utils/js/bienvenidse.js"></script>
-    <script>
-      $(document).ready(function() {
-        welcome();
+  <script>
+    function guiauser() {
 
-      })
-    </script>
+      var activategu = "guiauso";
+      $.post("../controllers/guiauso.php", {
+        postactivategu: activategu
+      }, function(responsedata) {
+        $("#datawelcome").html(responsedata);
+      });
+      $("#id01").modal("show");
 
-    <script>
+    }
+  </script>
+
+  <script src="../utils/js/bienvenidse.js"></script>
+  <script src="../utils/js/servicescat.js"></script>
+  <script>
+    $(document).ready(function() {
+      welcome();
+      servicechange();
+    })
+  </script>
+
+  <script>
 
 
-    </script>
-    <!-- jQuery 3 -->
-    <script src="../librerias/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../librerias/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-      $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../librerias/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Morris.js charts -->
-    <script src="../librerias/bower_components/raphael/raphael.min.js"></script>
-    <script src="../librerias/bower_components/morris.js/morris.min.js"></script>
-    <!-- Sparkline -->
-    <script src="../librerias/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-    <!-- jvectormap -->
-    <script src="../librerias/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../librerias/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="../librerias/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="../librerias/bower_components/moment/min/moment.min.js"></script>
-    <script src="../librerias/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="../librerias/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="../librerias/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="../librerias/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../librerias/bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../librerias/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../librerias/dist/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../librerias/dist/js/demo.js"></script>
-    <script src="../utils/js/url.js"></script>
-    <script src="../utils/js/datospersonales.js"></script>
-    <script src="../utils/js/utils.js"></script>
-    <script src="../utils/js/loadmypanel.js"></script>
+  </script>
+  <!-- jQuery 3 -->
+  <script src="../librerias/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- jQuery UI 1.11.4 -->
+  <script src="../librerias/bower_components/jquery-ui/jquery-ui.min.js"></script>
+  <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+  <script>
+    $.widget.bridge('uibutton', $.ui.button);
+  </script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="../librerias/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- Morris.js charts -->
+  <script src="../librerias/bower_components/raphael/raphael.min.js"></script>
+  <script src="../librerias/bower_components/morris.js/morris.min.js"></script>
+  <!-- Sparkline -->
+  <script src="../librerias/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+  <!-- jvectormap -->
+  <script src="../librerias/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+  <script src="../librerias/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <!-- jQuery Knob Chart -->
+  <script src="../librerias/bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+  <!-- daterangepicker -->
+  <script src="../librerias/bower_components/moment/min/moment.min.js"></script>
+  <script src="../librerias/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+  <!-- datepicker -->
+  <script src="../librerias/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+  <!-- Bootstrap WYSIHTML5 -->
+  <script src="../librerias/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+  <!-- Slimscroll -->
+  <script src="../librerias/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+  <!-- FastClick -->
+  <script src="../librerias/bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../librerias/dist/js/adminlte.min.js"></script>
+  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+  <script src="../librerias/dist/js/pages/dashboard.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="../librerias/dist/js/demo.js"></script>
+  <script src="../utils/js/url.js"></script>
+  <script src="../utils/js/datospersonales.js"></script>
+  <script src="../utils/js/utils.js"></script>
+  <script src="../utils/js/loadmypanel.js"></script>
+  <script src="../utils/js/validatesessionfront.js"></script>
 </body>
 
 </html>

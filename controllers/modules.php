@@ -160,40 +160,48 @@ if(!empty($_POST['registeruser'])){
 }
 // Registro del módulo Modulo 1 - View ( Registro de usuario)
 if(!empty($_POST['pactiateregister'])){
-// Excepción si el usuario es de tipo 1 - Cliente , no registra servicio y preentación
     if($_SESSION['tipouser'] == '1'){
-        
-   
-        $_POST['pslstipodoc']='1';
-        $_POST['ptxtareades']="defaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulcliente";
-        
+        $_POST['pslstipodoc']='66';
+        $_POST['ptxtareades']='defaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulcliente';
+
     }
+    // Excepción si el usuario es de tipo 1 - Cliente , no registra servicio y preentación
+    // pactiateregister:actiateregister,
+    // ptxtlastname:txtlastname,
+    // pnrowhatsapp:nrowhatsapp,
+    // postiddistrito:iddistrito,
+    // pslstipodoc:slstipodoc,  // Tipo de Servicio que realiza
+    // ptxtareades:txtareades
 
-    $postiddistrito = $utilsphp->validarestados($_POST['postiddistrito'],'distrito','idDistrito');
-    $ptxtlastname = $utilsphp->depurateinfocavioalfa($_POST['ptxtlastname'],"Nombres Completos");
-    $pslstdocumento = $utilsphp->validarestados($_POST['pslstdocumento'],'tdocumento','id');
-    $pslstipodoc = $utilsphp->validarestados($_POST['pslstipodoc'],'servicesdet','idtipservicio');
-    $valtipdoc = $utilsphp->validaciontipodoc($_POST['ptxtnrodocumento'],$_POST['pslstdocumento']);
+
+    // pslstdocumento:slstdocumento,
+    // ptxtnrodocumento:txtnrodocumento,
+    // ptxtubicaciond:txtubicaciond,
+    // ptxtdirecciond:txtdirecciond,
+
+    $postiddistrito = $utilsphp->validarestados($_POST['postiddistrito'], 'distrito', 'idDistrito');
+    $ptxtlastname = $utilsphp->depurateinfocavioalfa($_POST['ptxtlastname'], "Nombres Completos");
+    // $pslstdocumento = $utilsphp->validarestados($_POST['pslstdocumento'],'tdocumento','id');
+    $pslstipodoc = $utilsphp->validarestados($_POST['pslstipodoc'], 'servicesdet2child', 'idservice2');
+    // $valtipdoc = $utilsphp->validaciontipodoc($_POST['ptxtnrodocumento'],$_POST['pslstdocumento']);
     // $ptxtubicaciond = $utilsphp->depurateinfocavioalfa($_POST['ptxtubicaciond'],"Ubicación");
-    $ptxtdirecciond = $utilsphp->depurateinfocavioalfa($_POST['ptxtdirecciond'],"Dirección"); 
+    // $ptxtdirecciond = $utilsphp->depurateinfocavioalfa($_POST['ptxtdirecciond'],"Dirección"); 
     $ptxtareades = $utilsphp->depurateinfocavioalfa($_POST['ptxtareades'],"Detalle");
-
     $pnrowhatsapp = $utilsphp->valnrotelefono($_POST['pnrowhatsapp']);
-
 
 
     if(!empty($ptxtlastname)){
         echo $ptxtlastname;
-    }else if(empty($pslstdocumento)){
-        echo "No existe el tipo de documento indicado";
+    // }else if(empty($pslstdocumento)){
+    //     echo "No existe el tipo de documento indicado";
     }else if(empty($postiddistrito)){
         echo "La Ubicación indicada no existe";
-    }else if(!empty($valtipdoc)){
-        echo $valtipdoc;
-    }else if(!empty($ptxtubicaciond)){
-        echo $ptxtubicaciond;
-    }else if(!empty($ptxtdirecciond)){
-        echo $ptxtdirecciond;
+    // }else if(!empty($valtipdoc)){
+    //     echo $valtipdoc;
+    // }else if(!empty($ptxtubicaciond)){
+    //     echo $ptxtubicaciond;
+    // }else if(!empty($ptxtdirecciond)){
+    //     echo $ptxtdirecciond;
     }else if(empty($pslstipodoc)){
         echo "No existe el tipo de Servicio Indicado";
     }else if(!empty($ptxtareades)){
@@ -205,11 +213,13 @@ if(!empty($_POST['pactiateregister'])){
         echo $pnrowhatsapp;
     }else{
         // realizar la actualización
-        if($_SESSION['tipouser'] == '1'){
-            $_POST['pslstipodoc']='99';
-            $_POST['ptxtareades']="defaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulclientedefaulcliente";
+        if($_SESSION['tipouser'] == '1' || $_SESSION['tipouser'] == '2'){
+                        
+            $_POST['ptxtnrodocumento'] = '000000000000';
+            $_POST['pslstdocumento'] = '9';
+            $_POST['ptxtdirecciond'] ='default';
         }  
-
+    
         echo $entityusers->Actualizarusuario($_POST['ptxtlastname'],$_POST['postiddistrito'],$_POST['ptxtdirecciond'],$_POST['ptxtnrodocumento'],$_POST['pnrowhatsapp'],$_POST['pslstdocumento'],$_SESSION['email'],$_POST['ptxtareades'],$_POST['pslstipodoc']);
         
     }

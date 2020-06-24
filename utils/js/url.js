@@ -22,6 +22,7 @@ $(document).ready(function(){
     $('#myprofile').click(function(event){
         var url= "perfil.php";
         validar(url);
+    
         // Cargaremos el módulo de validación Inicial
         var mostrar="Activate";
         $.post("../controllers/datospersonales.php",{

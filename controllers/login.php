@@ -62,6 +62,7 @@ if (!empty($_POST['requestactivatelogin'])) {
                             $_SESSION['tipouser'] = $foreachresultselect['tipouser'];
                             $_SESSION['aliastipouser'] = $tipouser->buscartipuser($foreachresultselect['tipouser']);
                             $_SESSION['fechaderegistro'] = $foreachresultselect['fechaderegistro'];
+                            $_SESSION['imageuserperfil'] = $foreachresultselect['imagen'];
                             // Insertando información
                             $historylogin->insertlogin($utilshe->fecha(),$_SESSION['iduser']);
                             echo "1";

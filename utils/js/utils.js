@@ -26,6 +26,7 @@ function buscardepbusq(valor){
     
 }
 function buscarserv(){
+
   // Envia dos parametros el activador y la cabecera inicial del componente select para buscar servicios
         var busqserv = "activate";
       

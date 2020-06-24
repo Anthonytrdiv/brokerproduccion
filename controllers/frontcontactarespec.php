@@ -60,7 +60,10 @@ foreach ($modalubicacion->selectdataubigeo($fdescripespeci['ubigeo']) as $fubige
     echo "<div class='card border-primary mb-3' style='max-width: 960px;'>";
     echo "<div class='row no-gutters'>";
     echo "<div class='col-md-4'>";
-    echo "<img src='frontend/assets/img/logobig.png' class='card-img' alt='150x150' style='width: 150px; height: 150px;'>";
+    echo "<img src='frontend/assets/img/logobig.png' 
+    
+    
+    class='card-img' alt='150x150' style='width: 150px; height: 150px;'>";
     echo "</div>";
     echo "<div class='col-md-8'>";
     echo "<div class='card-body'>";

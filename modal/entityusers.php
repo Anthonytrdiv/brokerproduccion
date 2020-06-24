@@ -4,7 +4,7 @@ class entityusersmodal{
 
     function registrarusers($tipouser,$datetime,$email,$password,$contrato,$nombrescompletos,$statususer){
         require("../utils/config/conex.php");
-        $queryinsert = mysqli_query($enlacego,"INSERT INTO gouser VALUES (NULL, '$tipouser', '$nombrescompletos', 50000, 'default', '$datetime', '$email', '$password', 'default', '000000000000', '000000000000',$contrato,'9','default','99',$statususer)");
+        $queryinsert = mysqli_query($enlacego,"INSERT INTO gouser VALUES (NULL, '$tipouser', '$nombrescompletos', 50000, 'default', '$datetime', '$email', '$password', 'user2-160x160.jpg', '000000000000', '000000000000',$contrato,'9','default','99',$statususer)");
         if($queryinsert==false){
             $register = 3; // Error Desconocido
         }else{
@@ -64,7 +64,7 @@ class entityusersmodal{
     {
         // En duro - llevar a un sistema como parametro Listar cada 10 resultado Variable $fin
         require("../utils/config/conex.php");
-        $querylistarxlimit = mysqli_query($enlacego, "SELECT * FROM gouser WHERE tipouser ='2' AND tdocumento<>9 LIMIT $inicio,$fin");
+        $querylistarxlimit = mysqli_query($enlacego, "SELECT * FROM gouser WHERE tipouser ='2' AND ubigeo<>50000 LIMIT $inicio,$fin");
         $arrayxlimit = array();
         while ($filaresult = mysqli_fetch_assoc($querylistarxlimit)) {
             $arrayxlimit[] = $filaresult;
@@ -74,7 +74,7 @@ class entityusersmodal{
     }
     function listaruserxtip($tipuser,$cantregistros){
         require("../utils/config/conex.php");
-        $querytouser = mysqli_query($enlacego,"select * from gouser where tipouser ='$tipuser' AND tdocumento<>9 limit $cantregistros");
+        $querytouser = mysqli_query($enlacego,"select * from gouser where tipouser ='$tipuser' AND ubigeo<>50000 limit $cantregistros");
         $arraytouser = array();
         while($rowtouser = mysqli_fetch_assoc($querytouser)){
             $arraytouser[] = $rowtouser;
@@ -87,7 +87,7 @@ class entityusersmodal{
     {
         require("../utils/config/conex.php");
         // $querysearch = mysqli_query($enlacego, "SELECT * FROM gouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND ubigeo LIKE '%$ubigeo%' AND tdocumento<>9 limit $inicio2,$fin2");
-        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idservicesdet LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND idtipservicio LIKE '%$catchildren%' AND tdocumento<>9 LIMIT $inicio2,$fin2");
+        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idservicesdet LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND idtipservicio LIKE '%$catchildren%' AND idDistrito<>50000 LIMIT $inicio2,$fin2");
         $arraysearch = array();
         while ($rowsearch = mysqli_fetch_assoc($querysearch)) {
             $arraysearch[] = $rowsearch;
@@ -103,7 +103,7 @@ class entityusersmodal{
     {
         require("../utils/config/conex.php");
         // $querysearch = mysqli_query($enlacego, "SELECT * FROM gouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND ubigeo LIKE '%$ubigeo%' AND tdocumento<>9 limit $inicio2,$fin2");
-        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idservicesdet LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND idtipservicio LIKE '%$catchildren%' AND tdocumento<>9 LIMIT $inicio2,$fin2");
+        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idservicesdet LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND idtipservicio LIKE '%$catchildren%' AND idDistrito<>50000 LIMIT $inicio2,$fin2");
         if ($querysearch == false) {
             return 99; // error
         } else {
@@ -117,7 +117,7 @@ class entityusersmodal{
     {
         require("../utils/config/conex.php");
         // $querysearch = mysqli_query($enlacego, "SELECT * FROM gouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND ubigeo LIKE '%$ubigeo%' AND tdocumento<>9 limit $inicio2,$fin2");
-        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND tdocumento<>9 ");
+        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND idDistrito<>50000 ");
         $arraysearch = array();
         while ($rowsearch = mysqli_fetch_assoc($querysearch)) {
             $arraysearch[] = $rowsearch;
@@ -132,7 +132,7 @@ class entityusersmodal{
     {
         require("../utils/config/conex.php");
         // $querysearch = mysqli_query($enlacego, "SELECT * FROM gouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND ubigeo LIKE '%$ubigeo%' AND tdocumento<>9 limit $inicio2,$fin2");
-        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND tdocumento<>9 ");
+        $querysearch = mysqli_query($enlacego, "SELECT * FROM viewubigeouser WHERE idtipservicio LIKE '%$idtipservicio%' AND tipouser = '$idtipouser' AND present LIKE '%$present%' AND idDistrito LIKE '%$distrito%' AND idProvincia  LIKE '%$provincia%' AND idDepartamento  LIKE '%$departamento%' AND nameandlast LIKE '%$nameespecialista%' AND idDistrito<>50000 ");
         $countsearch = mysqli_num_rows($querysearch);
         return $countsearch;     
         mysqli_close($enlacego);
@@ -142,7 +142,7 @@ class entityusersmodal{
     // Funcion que te devuelve solo la lista de especialistas que esten registrados complemtanete y sean de tipo 2 (Especialista)
         function listarxiduser($iduser){
             require("../utils/config/conex.php");
-            $querylistarxiduser= mysqli_query($enlacego,"SELECT * FROM gouser where iduser ='$iduser' and tipouser='2' and tdocumento <> 9");
+            $querylistarxiduser= mysqli_query($enlacego,"SELECT * FROM gouser where iduser ='$iduser' and tipouser='2' and ubigeo <> 50000");
             $arraylistarxiduser = array();
             while($rowlistarxiduser = mysqli_fetch_assoc($querylistarxiduser)){
                 $arraylistarxiduser[] = $rowlistarxiduser;
@@ -151,9 +151,20 @@ class entityusersmodal{
             mysqli_close($enlacego);
         }
 
+        function validarregistro($codigo){
+            require("../utils/config/conex.php");
+            $queryva = mysqli_query($enlacego,"SELECT * FROM gouser where email ='$codigo'  and ubigeo <> 50000");
+            $num = mysqli_num_rows($queryva);
+            if($num == 0){
+                echo "0";
+            }else if($num > 0){
+                echo "1";
+            }
+        }
+
         function listarxiduser2($iduser2){
             require("../utils/config/conex.php");
-            $querylistarxiduser2= mysqli_query($enlacego,"SELECT * FROM gouser where iduser ='$iduser2'  and tdocumento <> 9");
+            $querylistarxiduser2= mysqli_query($enlacego,"SELECT * FROM gouser where iduser ='$iduser2'  and ubigeo <> 50000");
             $arraylistarxiduser2 = array();
             while($rowlistarxiduser2 = mysqli_fetch_assoc($querylistarxiduser2)){
                 $arraylistarxiduser2[] = $rowlistarxiduser2;
@@ -173,8 +184,41 @@ class entityusersmodal{
             mysqli_close($enlacego);
         }
         
+
+        function viewusers($coduser){
+            require("../utils/config/conex.php");
+            $listuser = mysqli_query($enlacego,"select * from viewuserandservicios where iduser = $coduser");
+            $qryusers = array();
+            while($rowusers = mysqli_fetch_assoc($listuser)){
+                $qryusers[] = $rowusers;
+            }
+
+            return $qryusers;
+            mysqli_close($enlacego);
+        }
         
+
+        function viewusersubigeo($coduser){
+            require("../utils/config/conex.php");
+            $listuser = mysqli_query($enlacego,"select * from viewubigeouser where iduser = $coduser");
+            $qryusers = array();
+            while($rowusers = mysqli_fetch_assoc($listuser)){
+                $qryusers[] = $rowusers;
+            }
+
+            return $qryusers;
+            mysqli_close($enlacego);
+        }
         
+        function updateimage($cod,$ruta){
+            require("../utils/config/conex.php");
+            $updateuser = mysqli_query($enlacego,"UPDATE gouser SET imagen='$ruta' WHERE iduser='$cod'");
+            if($updateuser == false){
+                $res=0;
+            }else{
+                $res=1;
+            }
+        }
 
     
 }

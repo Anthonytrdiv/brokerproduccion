@@ -12,109 +12,66 @@ $cdettable = "idtipservicio";
 session_start();
 
 if (!empty($_POST['requestactivateformfirst'])) {
-    //Validación si Existe el Flag que restringe la edición del Campo DNI y Nombres
-    if (!empty($_SESSION['flagmostrardata'])) {
-        $Titulo = "Editar tu data - Tu DNI y Nombres estan en validación";
-        $subTitulo = "Podrás editar esa información luego de 1 mes. <br>o mandar un correo a contacto@ibrokergo.com";
-        $propiedadblocked = "disabled = 'true'";
-        //traemos el DNI y los nombres como datos por defecto.
-        foreach ($entityusers->listaruser($_SESSION['email']) as $foreachresultval) {
-            $_SESSION['tdoc'] = $foreachresultval['tdocumento'];
-            $_SESSION['flagdoc'] = $foreachresultval['nrodoc'];
-            $_SESSION['flagname'] = $foreachresultval['nameandlast'];
-        }
-    } else {
-        $Titulo = "Nuevo Registro - Atención!";
-        $subTitulo = "Mientras mas datos ingreses , mas confianza vas a generar. <br>Tus datos serán verificados ,evita la suspensión de tu cuenta.";
-        $propiedadblocked = "";
-        $_SESSION['tdoc'] = "";
-        $_SESSION['flagdoc'] = "";
-        $_SESSION['flagname'] = "";
-    }
-    //Mostrar el formulario por primera vez
+    foreach ($entityusers->listaruser($_SESSION['email']) as $foreachresultval) {
+                $_SESSION['tdoc'] = $foreachresultval['tdocumento'];
+                $_SESSION['flagdoc'] = $foreachresultval['nrodoc'];
+                $_SESSION['flagname'] = $foreachresultval['nameandlast'];
+                $_SESSION['whatsapp'] = $foreachresultval['celular'];
+                $_SESSION['presenta'] = $foreachresultval['present'];
+            }
+
 
     echo "<form class='form-horizontal'>";
 
-    echo "<div class='alert alert-info alert-dismissible'>";
+    echo "<div class='alert alert-info alert-dismissible'>Hola, esta información podrás editarla más adelante";
     echo "<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>";
-    echo "<h4><i class='icon fa fa-info'></i> " . $Titulo . "!</h4>";
-    echo $subTitulo;
-    echo "</div>";
-    // Si la data existe no va a mostrar el campo para editar el DNI
-    if (empty($_SESSION['flagmostrardata'])) {
-        echo "<div class='form-group'>";
-        echo "<label for='inputName' class='col-sm-2 control-label'>Escoge:</label>";
-        echo "<div class='col-sm-10'>";
-        echo "<label for='exampleFormControlSelect1'> Tipo de Documento : DNI / CE / PTT</label>";
-        echo "<select  class='form-control' id='selectedtipodoc'>";
-        echo "<option value='1'>L.E / DNI</option>";
-        echo "<option value='2'>CARNET EXT.</option>";
-        echo "<option value='3'>PASAPORTE</option>";
 
-        echo "</select>";
-        echo "</div>";
-        echo "</div>";
-    }
+    echo "</div>";
+
 
     echo "<div class='form-group'>";
-    echo "<label for='inputName' class='col-sm-2 control-label'>Documento</label>";
 
     echo "<div class='col-sm-10'>";
     echo "<div class='input-group input-group-lg'>";
     echo "<div class='input-group-btn'>";
 
     echo "</div>";
-    echo "<input type='text' class='form-control' id='txtnrodni' placeholder='Ingresar el documento' $propiedadblocked value='" . $_SESSION['flagdoc'] . "' >";
     echo "</div>";
     echo "</div>";
     echo "</div>";
     echo "<div class='form-group'>";
     echo "<label for='inputName' class='col-sm-2 control-label'>Nombres Full:</label>";
     echo "<div class='col-sm-10'>";
-    echo "<input type='text' class='form-control' id='txtname' placeholder='Nombres y Apellidos' $propiedadblocked value='" . $_SESSION['flagname'] . "'>";
+    echo "<input type='text' class='form-control' id='txtlastname' placeholder='Nombres y Apellidos'  value='" . $_SESSION['flagname'] . "'>";
     echo "</div>";
     echo "</div>";
     echo "<div class='form-group'>";
     echo "<label for='txtemail' class='col-sm-2 control-label'> Escoge.:</label>";
     echo "<div class='col-sm-10'>";
-    // echo "<input type='text' class='form-control' id='txtubicacion' onkeyup='valubi()' placeholder='Provincia,provincia,distrito'>";
-    // echo "<div id='smsubicacion'></div>";
 
 
     echo "<label for='inputAddress'>Ubicación : Departamento,Provincia,Distrito</label>";
     require("../utils/ubigeocmb.php");
-    // echo "<select id='iddepartamento' class='form-control'>";
-    // echo "</select>";
-    // echo "<select id='idprovincia' class='form-control'>";
-    // echo "<option value='' id=''>Escoge la provincia...</option>";
-    // echo "</select>";
-    // echo "<select id='iddistrito' class='form-control'>";
-    // echo "<option value=''>Escoge el Distrito...</option>";
-    // echo "</select>";
+
     echo "</div>";
     echo "</div>";
 
 
     echo "<div class='form-group'>";
-    echo "<label for='inputName' class='col-sm-2 control-label'>Dirección</label>";
-    echo "<div class='col-sm-10'>";
-    echo "<input type='text' class='form-control' id='txtdireccion' placeholder='Indica donde estas ubicado - No se verá en la web' required>";
-    echo "</div>";
-    echo "</div>";
 
- if($_SESSION['tipouser'] == "2"){
-    echo "<div class='form-group'>";
-    echo "<label for='inputExperience' class='col-sm-2 control-label'>Presentación</label>";
     echo "<div class='col-sm-10'>";
-    echo "<textarea class='form-control' maxlength='350' id='txtdescripcion'  placeholder='Haz una buena presentación , esto es lo que verán tus clientes...' required></textarea>";
-    echo "</div>";
-    echo "</div>";
- }
 
+    echo "</div>";
+    echo "</div>";
     echo "<div class='form-group'>";
     echo "<label for='inputSkills' class='col-sm-2 control-label'><i class='fa fa-whatsapp fa-2' aria-hidden='true'></i> Whatsapp</label>";
     echo "<div class='col-sm-10'>";
-    echo "<input type='tiponumber' class='form-control' id='txtcel' placeholder='Por aqui te van a contactar' required>";
+    if($_SESSION['whatsapp']=="0"){
+        $dataw="";
+    }else{
+        $dataw=$_SESSION['whatsapp'];
+    }
+    echo "<input type='tiponumber' class='form-control' id='nrowhatsapp'  value='" . $dataw . "' placeholder='Por aqui te van a contactar' required>";
     echo "</div>";
     echo "</div>";
 
@@ -124,11 +81,19 @@ if (!empty($_POST['requestactivateformfirst'])) {
         echo "<div class='form-group'>";
         echo "<label for='inputSkills' class='col-sm-2 control-label'> Ocupación ?</label>";
         echo "<div class='col-sm-10'>";
-        echo "<select class='form-control' id='selectespecialidad'>";
-        foreach($listservice->listarservicios() as $resultlistser){
-           echo "<option value='".$resultlistser['idtipservicio']."'>".$resultlistser['name']."</option>";     
-        }
+        require("../utils/servicecmb.php");
         echo "</select>";
+        echo "</div>";
+        echo "</div>";
+        echo "<div class='form-group'>";
+        echo "<label for='inputExperience' class='col-sm-2 control-label'>Presentación</label>";
+        echo "<div class='col-sm-10'>";
+        if($_SESSION['presenta']=="default"){
+            $data="";
+        }else{
+            $data=$_SESSION['presenta'];
+        }
+        echo "<textarea class='form-control' maxlength='350' id='txtareades'  required>".$data."</textarea>";
         echo "</div>";
         echo "</div>";
     }
@@ -143,10 +108,14 @@ if (!empty($_POST['requestactivateformfirst'])) {
 
     echo "<div class='form-group'>";
     echo "</div>";
-    echo "<div id='smserrordatospersonales'></div>";
+
+ 
+    echo "<div id='msmerrorge'></div>";
+    echo "</div>"; 
+
     echo "<div class='form-group'>";
     echo "<div class='col-sm-offset-2 col-sm-10'>";
-    echo "<button type='button' id='btnactualizar' onclick='registrar()' class='btn btn-danger' data-toggle='modal' data-target='#modal-info'>Actualizar</button>";
+    echo "<button type='button' id='btnactualizar' onclick='registercont2()' class='btn btn-danger' data-toggle='modal' data-target='#modal-info'>Actualizar</button>";
     echo "<button type='button' id='btncancelar' onclick='cancelar()' class='btn btn-warning' data-toggle='modal' data-target='#modal-info'>Cancelar</button>";
     echo "</div>";
     echo "</div>";
@@ -189,18 +158,6 @@ if (!empty($_POST['requestmostrar'])) {
         echo "</div>";
 
         echo "<div class='form-group'>";
-        echo "<label for='inputName' class='col-sm-2 control-label'>Documento</label>";
-
-        echo "<div class='col-sm-10'>";
-        echo "<div class='input-group input-group-lg'>";
-        echo "<div class='input-group-btn'>";
-
-        echo "</div>";
-        echo $foreachusers['nrodoc'];
-        echo "</div>";
-        echo "</div>";
-        echo "</div>";
-        echo "<div class='form-group'>";
         echo "<label for='inputName' class='col-sm-2 control-label'>Nombres Full:</label>";
         echo "<div class='col-sm-10'>";
         echo $foreachusers['nameandlast'];
@@ -215,13 +172,7 @@ if (!empty($_POST['requestmostrar'])) {
         echo "</div>";
         echo "</div>";
 
-
-        echo "<div class='form-group'>";
-        echo "<label for='inputName' class='col-sm-2 control-label'>Dirección</label>";
-        echo "<div class='col-sm-10'>";
-        echo $foreachusers['direccion'];
-        echo "</div>";
-        echo "</div>";
+       
         if ($_SESSION['tipouser'] == "2") {
             // Mostrar la información de presentación si el tipo de usuario es de Tipo especialista 2
             echo "<div class='form-group'>";
@@ -246,7 +197,12 @@ if (!empty($_POST['requestmostrar'])) {
         echo "<div class='form-group'>";
         echo "<label for='inputSkills' class='col-sm-2 control-label'><i class='fa fa-whatsapp fa-2' aria-hidden='true'></i>Tu servicio.:</label>";
         echo "<div class='col-sm-10'>";
-        echo $listservice->listarserviciosxcod($foreachusers['idtipservicio']);
+        
+        foreach( $entityusers->viewusers($_SESSION['iduser']) as $fdata){
+            echo $fdata['name'] . ", " . $fdata['nombre'];
+
+        }
+        // echo $listservice->listarserviciosxcod($foreachusers['idtipservicio']);
         echo "</div>";
         echo "</div>";
 
