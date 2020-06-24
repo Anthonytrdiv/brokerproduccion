@@ -3,6 +3,11 @@
 
 <?php
 require_once("../frames/headndesing.php");
+// if(!empty($_SESSION['useractivadotemp'])){
+
+// }else{
+//   header("location:index.php");
+// }
 ?>
 
 <body>
@@ -13,36 +18,28 @@ require_once("../frames/headndesing.php");
   ?>
 
   </header><!-- End Header -->
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
     <div class="container">
-      <div class="row">
 
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <img class="card-img-top" src="frontend/assets/img/especialistaregister.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Registrate como <strong>Especialista</strong></h5>
-                <p class="card-text">¡Quieres recibir trabajo y ser parte de la familia IBroker GO!, esta es tu oportunidad.</p>
-                <a href="#" class="btn btn-primary" onclick="validate()">Registrarme</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <img class="card-img-top" src="frontend/assets/img/clienteregister.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Registrate como <strong>Cliente</strong></h5>
-                <p class="card-text">Quieres encontrar especialistas que solucionen tus inconvenientes o hagan realidad tu proyecto, esta es tu oportunidad.</p>
-                <a href="especialidadgo.php" class="btn btn-primary">Registrarme</a>
-              </div>
-            </div>
+      <div class="col">
+        <div class="card">
+          <img class="card-img-top" src="frontend/assets/img/useractivado.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">¿No te llego el correo de <strong>activación?</strong></h5>
+            <p class="card-text">Indica el Email , con la cual te has registrado <strong>(Se volverá a reenviar el Email)</strong>.</p>
+            <input type="email" class="form-control" id="txtemail" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
+            <div id="iderroruser"></div>
+            <a href="#" onclick="reenviaremail()" class="btn btn-primary">Reenviar Correo</a>
           </div>
         </div>
-
       </div>
+
+    </div>
+
+    </div>
     </div>
   </section><!-- End Hero -->
 
@@ -195,7 +192,7 @@ require_once("../frames/headndesing.php");
   <script src="../utils/js/validatesessionfront.js"></script>
   <script src="../utils/js/registerservicefront.js"></script>
   <script src="../utils/js/datospersonales.js"></script>
-
+  <script src="../utils/js/resetuser.js"></script>
 
   <!-- Script de página register -->
   <script src="../utils/js/tipuser.js"></script>

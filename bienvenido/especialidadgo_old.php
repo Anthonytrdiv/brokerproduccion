@@ -1,49 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php require_once("../controllers/validatesesion.php")?>
+
+<?php
+//Crear sesión para registrar
+if(!empty($_SESSION['temptipuser1'])){
+  $_SESSION['temptipuser1'] = 1;
+}else{
+  $_SESSION['temptipuser1'] = 1;
+}
+
+
+?>
 
 <?php
 require_once("../frames/headndesing.php");
 ?>
 
 <body>
-  <?php require_once("../controllers/validatesesion.php") ?>
+
   <!-- ======= Header ======= -->
   <?php
   require_once("../frames/menundesing.php");
   ?>
 
   </header><!-- End Header -->
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
-    <div class="container">
-      <div class="row">
 
+    <div class="container">
+
+      <center>
         <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <img class="card-img-top" src="frontend/assets/img/especialistaregister.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Registrate como <strong>Especialista</strong></h5>
-                <p class="card-text">¡Quieres recibir trabajo y ser parte de la familia IBroker GO!, esta es tu oportunidad.</p>
-                <a href="#" class="btn btn-primary" onclick="validate()">Registrarme</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <img class="card-img-top" src="frontend/assets/img/clienteregister.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Registrate como <strong>Cliente</strong></h5>
-                <p class="card-text">Quieres encontrar especialistas que solucionen tus inconvenientes o hagan realidad tu proyecto, esta es tu oportunidad.</p>
-                <a href="especialidadgo.php" class="btn btn-primary">Registrarme</a>
+          <div class="col-sm">
+            <div class="col-sm-8">
+              <div class="card">
+                <img class="card-img-top" src="frontend/assets/img/gsolicitud.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <div id="gopc">
+                   
+                    <button type="button" class="btn btn-warning btn-lg btn-block" onclick="firtsoption()">Generar Solicitud!</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </center>
 
-      </div>
     </div>
+
+
   </section><!-- End Hero -->
 
   <main id="main">
@@ -54,7 +63,7 @@ require_once("../frames/headndesing.php");
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php include("../frames/footerindex.php"); ?>
+  <?php include("../frames/footerindex.php");?><!-- End Footer -->
 
 
   <!-- Modal -->
@@ -178,7 +187,7 @@ require_once("../frames/headndesing.php");
     $(document).ready(function() {
 
       // Handler for .ready() called.
-      menuregistergo();
+      menulogingo();
       loadbuttons();
       loadinitialespec();
       buscarserv();
@@ -188,18 +197,13 @@ require_once("../frames/headndesing.php");
 
     });
   </script>
-
-  <script src="../utils/js/initialsesionintra.js"></script>
-  <script src="../utils/js/frontbusqueda.js"></script>
-  <script src="../utils/js/seachfront.js"></script>
-  <script src="../utils/js/validatesessionfront.js"></script>
-  <script src="../utils/js/registerservicefront.js"></script>
-  <script src="../utils/js/datospersonales.js"></script>
+  <script src="../utils/js/welcomeespecialidad.js"></script>
+  <script src="../utils/js/registroclient.js"></script>
+  <script src="../utils/js/initialsesion.js"></script>
 
 
-  <!-- Script de página register -->
-  <script src="../utils/js/tipuser.js"></script>
-  <!-- FIN Script de página register -->
+
+
 
   <script>
     function apmodalbus() {

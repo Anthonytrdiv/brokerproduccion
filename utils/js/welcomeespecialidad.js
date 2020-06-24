@@ -10,9 +10,9 @@ function firtsoption(){
 function secondoption(){
     varactivatesecond="Activate";
     // Conseguir texto de selector:
-    // var selectedespecialidad = $("#selectioninformatico option:selected").text();
+    // var selectedespecsialidad = $("#selectioninformatico option:selected").text();
     // Tomamos el valor de la opción para crear una sesión
-    var selectedespecialidad =$("#selectioninformatico option:selected").val();
+    var selectedespecialidad =$("#idcatservicio option:selected").val();
     if(selectedespecialidad===""){
         alert("Debes de escoger el Servicio");
     }else{

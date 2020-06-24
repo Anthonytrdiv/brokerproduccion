@@ -1,49 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php require_once("../controllers/validatesesion.php")?>
 <?php
 require_once("../frames/headndesing.php");
 ?>
+<?php
+//Crear sesión para registrar
+if(!empty($_SESSION['temptipuser1'])){
+  $_SESSION['temptipuser1'] = 2;
+}else{
+  $_SESSION['temptipuser1'] = 2;
+}
 
+
+?>
 <body>
-  <?php require_once("../controllers/validatesesion.php") ?>
+
   <!-- ======= Header ======= -->
   <?php
   require_once("../frames/menundesing.php");
   ?>
 
   </header><!-- End Header -->
+
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
-    <div class="container">
-      <div class="row">
-
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="card">
-              <img class="card-img-top" src="frontend/assets/img/especialistaregister.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Registrate como <strong>Especialista</strong></h5>
-                <p class="card-text">¡Quieres recibir trabajo y ser parte de la familia IBroker GO!, esta es tu oportunidad.</p>
-                <a href="#" class="btn btn-primary" onclick="validate()">Registrarme</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="card">
-              <img class="card-img-top" src="frontend/assets/img/clienteregister.jpg" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title">Registrate como <strong>Cliente</strong></h5>
-                <p class="card-text">Quieres encontrar especialistas que solucionen tus inconvenientes o hagan realidad tu proyecto, esta es tu oportunidad.</p>
-                <a href="especialidadgo.php" class="btn btn-primary">Registrarme</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <div class="container">
+  <div class="row">
+    <div class="col-sm">
+      
     </div>
+    <div class="col-sm">
+    <form class="form-signin">
+      <img class="mb-4" src="frontend/assets/img/logobig.png" alt="" width="110" height="110">
+      <h4 class="h5 mb-3 font-weight-normal">Registrate Especialista!</h4>
+      <label for="txtnombrescompletos" class="sr-only">Nombres y Apellidos</label>
+      <input type="text" id="txtnombrescompletos" class="form-control" placeholder="Nombres y Apellidos" required="" autofocus="">
+
+      <label for="txtemail" class="sr-only">Email</label>
+      <input type="email" id="txtemail" class="form-control" placeholder="Email" required="" autofocus="">
+      
+      <label for="txtpass1" class="sr-only">Contraseña</label>
+      <input type="password" id="txtpass1" class="form-control" placeholder="Password" required="">
+      
+      <label for="txtpass2" class="sr-only">Repetir contraseña</label>
+      <input type="password" id="txtpass2" class="form-control" placeholder="Repetir contraseña" required="">
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" name="aceptar" id="aceptar"> <small>Al crear una cuenta acepto los <a href='terms.php' target='_blank' tabindex='-1' rel='noopener' class='underline green'>términos de servicio</a> y la <a href='politica-privacidad.php' target='_blank' tabindex='-1' rel='noopener' class='underline green'>Política y privacidad</a> de IBrokerGo!</small>
+        </label>
+      </div>
+      
+      <div id="alertval">
+      </div>
+      <div id="alertsesion"></div>
+      <button class="btn btn-lg btn-primary btn-block" type="button" onclick="registrar(2)">Registrate!</button>
+      <a href="logingo.php" class="text-center">Ya tienes cuenta? - Inicia Sesión</a>
+      <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
+    </form>
+    </div>
+    <div class="col-sm">
+      
+    </div>
+  </div>
+</div>
+
+
   </section><!-- End Hero -->
 
   <main id="main">
@@ -54,7 +78,7 @@ require_once("../frames/headndesing.php");
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <?php include("../frames/footerindex.php"); ?>
+  <?php include("../frames/footerindex.php");?><!-- End Footer -->
 
 
   <!-- Modal -->
@@ -176,9 +200,8 @@ require_once("../frames/headndesing.php");
   <script src="../utils/js/menudesing.js"></script>
   <script>
     $(document).ready(function() {
-
+      registratemenu();
       // Handler for .ready() called.
-      menuregistergo();
       loadbuttons();
       loadinitialespec();
       buscarserv();
@@ -191,10 +214,10 @@ require_once("../frames/headndesing.php");
 
   <script src="../utils/js/initialsesionintra.js"></script>
   <script src="../utils/js/frontbusqueda.js"></script>
-  <script src="../utils/js/seachfront.js"></script>
+  <script src="../utils/js/registroclient.js"></script>
   <script src="../utils/js/validatesessionfront.js"></script>
   <script src="../utils/js/registerservicefront.js"></script>
-  <script src="../utils/js/datospersonales.js"></script>
+
 
 
   <!-- Script de página register -->

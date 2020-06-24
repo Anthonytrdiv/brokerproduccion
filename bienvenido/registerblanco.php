@@ -38,7 +38,7 @@ Purchase:
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
-<script src="../utils/js/initialsesionintra.js"></script>
+
 <body>
     <!-- preloader Start -->
     <div id="preloader">
@@ -60,35 +60,29 @@ Purchase:
         <!-- register_form_wrapper -->
 
         <div class="container">
-      <div class="row">
-        <div class="col-sm">
-
-        </div>
-        <div class="col-sm">
-          <form class="form-signin">
-            <img class="mb-4" src="frontend/assets/img/logobig.png" alt="" width="110" height="110">
-            <h1 class="h3 mb-3 font-weight-normal">Inicia Sesión</h1>
-            <label for="txtemail" class="sr-only">Email</label>
-            <input type="email" id="txtemail" class="form-control" placeholder="Email" required="" autofocus="">
-            <label for="txtpassword" class="sr-only">Contraseña</label>
-            <input type="password" id="txtpassword" class="form-control" placeholder="Contraseña" required="">
-            <div class="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me"> Recuerdame
-                <p><a href='reset.php'>¿No Puedes ingresar? - Click aqui</a></p>
-              </label>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top" src="frontend/assets/img/especialistaregister.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Registrate como <strong>Especialista</strong></h5>
+                            <p class="card-text">¡Quieres recibir trabajo y ser parte de la familia IBroker GO!, esta es tu oportunidad.</p>
+                            <a href="#" class="btn btn-primary" onclick="validate()">Registrarme</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <img class="card-img-top" src="frontend/assets/img/clienteregister.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Registrate como <strong>Cliente</strong></h5>
+                            <p class="card-text">Quieres encontrar especialistas que solucionen tus inconvenientes o hagan realidad tu proyecto, esta es tu oportunidad.</p>
+                            <a href="especialidadgo.php" class="btn btn-primary">Registrarme</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div id="alertsesion"></div>
-            <button class="btn btn-lg btn-primary btn-block" type="button" onclick="iniciarsesion()">Iniciar Sesión</button>
-            <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
-          </form>
         </div>
-        <div class="col-sm">
-
-        </div>
-      </div>
-    </div>
         <!-- jp register wrapper end -->
 
     </div>

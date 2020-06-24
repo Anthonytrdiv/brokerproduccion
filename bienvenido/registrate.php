@@ -1,248 +1,109 @@
 <!DOCTYPE html>
+<!-- 
+Template Name: Job Pro
+Version: 1.0.0
+Author: 
+Website: 
+Purchase: 
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="en">
-<?php require_once("../controllers/validatesesion.php")?>
-<?php
-require_once("../frames/headndesing.php");
-?>
-<?php
-//Crear sesión para registrar
-if(!empty($_SESSION['temptipuser1'])){
-  $_SESSION['temptipuser1'] = 2;
-}else{
-  $_SESSION['temptipuser1'] = 2;
-}
+<!--<![endif]-->
 
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="Job Pro" />
+    <meta name="keywords" content="Job Pro" />
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320" />
+    <!--srart theme style -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css" />
+    <link rel="stylesheet" type="text/css" href="css/owl.theme.default.css" />
+    <link rel="stylesheet" type="text/css" href="css/flaticon.css" />
+    <link rel="stylesheet" type="text/css" href="css/style_II.css" />
+    <link rel="stylesheet" type="text/css" href="css/responsive2.css" />
+    <!-- favicon links -->
+    <link rel="shortcut icon" type="image/png" href="images/header/favicon.ico" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
 
-?>
 <body>
-
-  <!-- ======= Header ======= -->
-  <?php
-  require_once("../frames/menundesing.php");
-  ?>
-
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-
-  <div class="container">
-  <div class="row">
-    <div class="col-sm">
-      
-    </div>
-    <div class="col-sm">
-    <form class="form-signin">
-      <img class="mb-4" src="frontend/assets/img/logobig.png" alt="" width="110" height="110">
-      <h4 class="h5 mb-3 font-weight-normal">Registrate Especialista!</h4>
-      <label for="txtnombrescompletos" class="sr-only">Nombres y Apellidos</label>
-      <input type="text" id="txtnombrescompletos" class="form-control" placeholder="Nombres y Apellidos" required="" autofocus="">
-
-      <label for="txtemail" class="sr-only">Email</label>
-      <input type="email" id="txtemail" class="form-control" placeholder="Email" required="" autofocus="">
-      
-      <label for="txtpass1" class="sr-only">Contraseña</label>
-      <input type="password" id="txtpass1" class="form-control" placeholder="Password" required="">
-      
-      <label for="txtpass2" class="sr-only">Repetir contraseña</label>
-      <input type="password" id="txtpass2" class="form-control" placeholder="Repetir contraseña" required="">
-
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" name="aceptar" id="aceptar"> <small>Al crear una cuenta acepto los <a href='terms.php' target='_blank' tabindex='-1' rel='noopener' class='underline green'>términos de servicio</a> y la <a href='politica-privacidad.php' target='_blank' tabindex='-1' rel='noopener' class='underline green'>Política y privacidad</a> de IBrokerGo!</small>
-        </label>
-      </div>
-      
-      <div id="alertval">
-      </div>
-      <div id="alertsesion"></div>
-      <button class="btn btn-lg btn-primary btn-block" type="button" onclick="registrar(2)">Registrate!</button>
-      <a href="logingo.php" class="text-center">Ya tienes cuenta? - Inicia Sesión</a>
-      <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
-    </form>
-    </div>
-    <div class="col-sm">
-      
-    </div>
-  </div>
-</div>
-
-
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= App Features Section ======= -->
-
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <?php include("../frames/footerindex.php");?><!-- End Footer -->
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="idbuscartrabajo" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Filtro de Busqueda</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <!-- preloader Start -->
+    <div id="preloader">
+        <div id="status"><img src="images/header/loadinganimation.gif" id="preloader_image" alt="loader">
         </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-
-                <label for="inputState">Buscas un?</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Especialista...</option>
-                  <option selected>Trabajo...</option>
-
-                </select>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputState">De ?</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Informatica...</option>
-                  <option selected>Trabajo...</option>
-
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">Ubicación : Departamento,Provincia,Distrito</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Lima,Lima,San Luis">
-            </div>
-
-
-
-          </form>
-        </div>
-        <div class="modal-footer">
-          <a type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
-          <a type="button" class="btn btn-primary">Buscar!</a>
-        </div>
-      </div>
     </div>
-  </div>
+    <!-- Top Scroll End -->
+    <!-- Top Header Wrapper Start -->
+    <?php
+    include("../frames/header.menu.php");
+    ?>
+    <!-- Top Header Wrapper End -->
+    <!-- Header Wrapper Start -->
+    <?php include("../frames/menuv2.php") ?>
+    <script src="../utils/js/registroclient.js"></script>
 
-  <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog cascading-modal" role="document">
-      <!--Content-->
-      <div class="modal-content">
+    <!-- jp register wrapper start -->
+    <div class="register_section">
+        <!-- register_form_wrapper -->
 
-        <!--Modal cascading tabs-->
-        <div class="modal-c-tabs">
-
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs md-tabs tabs-2 light-blue darken-3" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-                Iniciar Sesión</a>
-            </li>
-
-          </ul>
-
-          <!-- Tab panels -->
-          <div class="tab-content">
-            <!--Panel 7-->
-            <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
-
-              <!--Body-->
-              <div class="modal-body mb-1">
-                <div class="md-form form-sm">
-                  <i class="fas fa-envelope prefix"></i>
-                  <input type="text" id="txtemail" class="form-control">
-                  <label for="txtemail">Ingresa tu Email</label>
-                </div>
-
-                <div class="md-form form-sm">
-                  <i class="fas fa-lock prefix"></i>
-                  <input type="password" id="txtpassword" class="form-control">
-                  <label for="txtpassword">Ingresa tu contraseña</label>
-                  <div id="alertsesion">
-
-                  </div>
-                </div>
-                <div class="text-center mt-2">
-                  <button class="btn btn-info" onclick="iniciarsesion()">Ingresar <i class="fas fa-sign-in-alt ml-1"></i></button>
-                </div>
-
-              </div>
-              <!--Footer-->
-              <div class="modal-footer">
-                <div class="options text-center text-md-right mt-1">
-                  <p>No estas registrado? <a href="registergo.php" class="blue-text">Registrate</a></p>
-                  <p><a href='reset.php'>¿No Puedes ingresar? - Click aqui</a></p>
-                </div>
-                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Cerrar</button>
-              </div>
+        <div class="row">
+            <div class="col-sm">
 
             </div>
-            <!--/.Panel 7-->
+            <div class="col-sm">
+                <form class="form-signin">
+                    <img class="mb-4" src="frontend/assets/img/logobig.png" alt="" width="110" height="110">
+                    <h4 class="h5 mb-3 font-weight-normal">Registrate Especialista!</h4>
+                    <label for="txtnombrescompletos" class="sr-only">Nombres y Apellidos</label>
+                    <input type="text" id="txtnombrescompletos" class="form-control" placeholder="Nombres y Apellidos" required="" autofocus="">
 
+                    <label for="txtemail" class="sr-only">Email</label>
+                    <input type="email" id="txtemail" class="form-control" placeholder="Email" required="" autofocus="">
 
-          </div>
+                    <label for="txtpass1" class="sr-only">Contraseña</label>
+                    <input type="password" id="txtpass1" class="form-control" placeholder="Password" required="">
 
+                    <label for="txtpass2" class="sr-only">Repetir contraseña</label>
+                    <input type="password" id="txtpass2" class="form-control" placeholder="Repetir contraseña" required="">
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="aceptar" id="aceptar"> <small>Al crear una cuenta acepto los <a href='terms.php' target='_blank' tabindex='-1' rel='noopener' class='underline green'>términos de servicio</a> y la <a href='politica-privacidad.php' target='_blank' tabindex='-1' rel='noopener' class='underline green'>Política y privacidad</a> de IBrokerGo!</small>
+                        </label>
+                    </div>
+
+                    <div id="alertval">
+                    </div>
+                    <div id="alertsesion"></div>
+                    <button class="btn btn-lg btn-primary btn-block" type="button" onclick="registrar(2)">Registrate!</button>
+                    <a href="logingo.php" class="text-center">Ya tienes cuenta? - Inicia Sesión</a>
+                    <p class="mt-5 mb-3 text-muted">© 2020-2020</p>
+                </form>
+            </div>
+            <div class="col-sm">
+
+            </div>
         </div>
-      </div>
-      <!--/.Content-->
+        <!-- jp register wrapper end -->
+
     </div>
-  </div>
-  <!--Modal: Login / Register Form-->
 
-  <script src="../utils/js/loadcomponentsfront.js"></script>
-  <script src="../utils/js/verifysesiones.js"></script>
-  <script src="../utils/js/utils.js"></script>
-  <script src="../utils/js/menudesing.js"></script>
-  <script>
-    $(document).ready(function() {
-      registratemenu();
-      // Handler for .ready() called.
-      loadbuttons();
-      loadinitialespec();
-      buscarserv();
-      borrarsesiones();
-      buscardep();
-      loadmenub();
-
-    });
-  </script>
-
-  <script src="../utils/js/initialsesionintra.js"></script>
-  <script src="../utils/js/frontbusqueda.js"></script>
-  <script src="../utils/js/registroclient.js"></script>
-  <script src="../utils/js/validatesessionfront.js"></script>
-  <script src="../utils/js/registerservicefront.js"></script>
-
-
-
-  <!-- Script de página register -->
-  <script src="../utils/js/tipuser.js"></script>
-  <!-- FIN Script de página register -->
-
-  <script>
-    function apmodalbus() {
-      $("#idbuscartrabajo").modal("show");
-    }
-  </script>
-  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="frontend/assets/vendor/jquery/jquery.min.js"></script>
-  <script src="frontend/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="frontend/assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-
-  <script src="frontend/assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-  <script src="frontend/assets/vendor/venobox/venobox.min.js"></script>
-  <script src="frontend/assets/vendor/aos/aos.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="frontend/assets/js/main.js"></script>
-
-</body>
+    <!-- jp Newsletter Wrapper Start -->
+    <?php
+    include("../frames/footerv2.php");
+    ?>
 
 </html>

@@ -9,14 +9,7 @@ if(!empty($_POST['requestactivate'])){
 $listarserviciosmodal = new serviciosmodal();
 
 echo "<p class='text-info' style='margin-bottom:14px'><h4>Escoge el Tipo de Servicio.</h4></p>";
-echo "<select class='browser-default custom-select' id='selectioninformatico'>"; 
-echo "<option value=''>Seleccion aqui - GO</option>";
-
-//Cargar en el combo la lista de servicios del campo name
-foreach($listarserviciosmodal->listarservicios() as $foreachlistarservicios){
-    echo "<option value='".$foreachlistarservicios['idtipservicio']."'>".$foreachlistarservicios['name']."</option>";
-}
-echo "</select>"; 
+require("../utils/servicecmb.php");
 echo "<img src='frontend/assets/img/logobroker.png' class='rounded mx-auto d-block'>"; 
 echo "<button type='button' onclick='secondoption()' class='btn btn-danger btn-lg'>Continuar</button>";
 
